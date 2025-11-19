@@ -1,87 +1,87 @@
-📊 Data Engineering YouTube Trending Video Analysis Project
+A fully end-to-end cloud data engineering project built using AWS S3, AWS Glue, Lambda, Athena, and QuickSight, designed to ingest, transform, analyze, and visualize structured & semi-structured YouTube trending video data at scale.
 
-A complete end-to-end cloud data engineering pipeline built using AWS (S3, Glue, Lambda, Athena, IAM, QuickSight) to ingest, process, transform, analyze, and visualize trending YouTube video data across multiple regions.
+This project replicates a real-world data engineering pipeline where data arrives in raw form, is processed through automated ETL pipelines, stored in a centralized data lake, and queried using a serverless architecture.
 
-This project simulates a real-world data engineering workflow involving structured + semi-structured data, a multi-layered data lake architecture, automated ETL, and serverless analytics.
+🚀 Project Summary
 
-🔥 Project Overview
+This project analyzes daily trending YouTube videos across multiple countries and builds a scalable cloud pipeline with:
 
-The goal of this project is to build a scalable and secure data pipeline that can:
+Automated data ingestion from multiple sources
 
-✔ Ingest raw YouTube trending video data from multiple regions
-✔ Clean, transform, and standardize it using PySpark
-✔ Store it in a structured data lake on S3
-✔ Automate ETL using AWS Glue & Lambda
-✔ Query data using AWS Athena
-✔ Build interactive dashboards using QuickSight
+Raw → cleaned → transformed layers inside a data lake
 
-This project demonstrates industry-level data engineering skills using cloud-native tools.
+Serverless ETL pipelines using AWS Glue + PySpark
 
-🎯 Key Features
-🗂️ 1. Multi-Zone Data Lake
+Event-driven processing via AWS Lambda
 
-Organized into 3 S3 zones:
+Interactive analytics with Athena
 
-/raw
+Dashboard & insights built in QuickSight
 
-/cleaned
+Designed for scalability, production readiness, and industry standard best practices.
 
-/transformed
+🎯 Project Goals
+✔ 1. Data Ingestion
 
-⚙️ 2. Serverless ETL Pipeline
+Create a modular pipeline to ingest CSV + JSON files from multiple regions.
 
-AWS Glue Job written in PySpark
+✔ 2. ETL Transformation
 
-Glue Crawler for schema detection
+Use PySpark (AWS Glue) to clean, merge, and standardize semi-structured data.
 
-Automated cleanup & transformation logic
+✔ 3. Data Lake Architecture
 
-🔔 3. Event-Driven Workflow
+Implement a multi-zone S3 structure:
 
-AWS Lambda triggers when new files are uploaded
+raw/
 
-Lambda invokes Glue jobs automatically
+cleaned/
 
-🔎 4. Serverless Query Engine
+transformed/
 
-Athena queries data directly from S3
+✔ 4. Scalability
 
-No need to load into a database
+Use serverless AWS services that automatically scale with data volume.
 
-📊 5. Interactive Visualizations
+✔ 5. Cloud-Native Processing
 
-Built in Amazon QuickSight, including:
+Leverage AWS to perform large-scale data transformations not possible locally.
 
-Top trending categories
+✔ 6. Analytics & Reporting
 
-Most viewed videos
+Use Athena + QuickSight to extract insights such as:
 
-Engagement metrics (likes, comments)
+Most trending categories
 
-Regional popularity patterns
+Top channels by views
 
-🧰 Technologies Used
-Category	Tools
-Cloud	AWS S3, IAM, Lambda, Glue, Athena, QuickSight
-Programming	Python, PySpark
-Data	CSV, JSON (category mapping)
-CLI	AWS CLI, Shell scripting
-Visualization	Amazon QuickSight
-📚 Dataset
+Regional patterns in trending videos
 
-Kaggle: YouTube Trending Video Dataset
-Contains daily trending videos for multiple countries.
+Engagement metrics (likes, comments, etc.)
+
+🛠 Tech Stack & AWS Services
+Service	Purpose
+Amazon S3	Central data lake for raw, cleaned, and transformed data
+AWS IAM	Role-based access control
+AWS Glue	PySpark ETL pipelines + Crawler for schema detection
+AWS Lambda	Event-driven triggers to automate workflows
+AWS Athena	Serverless SQL query engine for S3
+Amazon QuickSight	Dashboard & reporting layer
+📚 Dataset Used
+
+Kaggle Dataset: YouTube Trending Videos
+Contains CSV + JSON metadata for daily trending YouTube videos in multiple regions.
 
 🔗 https://www.kaggle.com/datasets/datasnaek/youtube-new
 
-Includes:
+Features:
 
-Titles, channels, tags
+Trending videos per region
 
-Views, likes, dislikes
+Title, channel, tags
 
-Comment counts
+Likes, views, comments
+
+category_id mapping via JSON
 
 Publication timestamps
-
-Regional category mapping via JSON
