@@ -23,50 +23,62 @@ Designed for scalability, production readiness, and industry standard best pract
 🎯 Project Goals
 ✔ 1. Data Ingestion
 
-Create a modular pipeline to ingest CSV + JSON files from multiple regions.
+Build a mechanism to ingest data from multiple sources efficiently.
 
-✔ 2. ETL Transformation
+✔ 2. ETL System
 
-Use PySpark (AWS Glue) to clean, merge, and standardize semi-structured data.
+Transform raw CSV and JSON data into a structured, query-ready format.
 
-✔ 3. Data Lake Architecture
+✔ 3. Centralized Data Lake
 
-Implement a multi-zone S3 structure:
-
-raw/
-
-cleaned/
-
-transformed/
+Store multi-region data in a unified S3-based data lake with raw, cleaned, and transformed layers.
 
 ✔ 4. Scalability
 
-Use serverless AWS services that automatically scale with data volume.
+Ensure the pipeline scales seamlessly as data volume grows.
 
-✔ 5. Cloud-Native Processing
+✔ 5. Cloud-First Architecture
 
-Leverage AWS to perform large-scale data transformations not possible locally.
+Use AWS cloud services to process large datasets that cannot be handled on a local machine.
 
-✔ 6. Analytics & Reporting
+✔ 6. Reporting & Analytics
 
-Use Athena + QuickSight to extract insights such as:
-
+Build dashboard visualizations to answer key business questions.
 Most trending categories
 
-Top channels by views
+🛠 Services Used
 
-Regional patterns in trending videos
+⭐ Amazon S3
 
-Engagement metrics (likes, comments, etc.)
+Object storage service providing scalability, high availability, security, and performance. Used as the data lake.
 
-🛠 Tech Stack & AWS Services
-Service	Purpose
-Amazon S3	Central data lake for raw, cleaned, and transformed data
-AWS IAM	Role-based access control
-AWS Glue	PySpark ETL pipelines + Crawler for schema detection
-AWS Lambda	Event-driven triggers to automate workflows
-AWS Athena	Serverless SQL query engine for S3
-Amazon QuickSight	Dashboard & reporting layer
+⭐ AWS IAM
+
+Identity and Access Management service to control access to AWS resources securely.
+
+⭐ AWS Glue
+
+Serverless ETL tool used for:
+
+Crawling schemas
+
+Cleaning data
+
+Running PySpark transformations
+
+Preparing data for analytics
+
+⭐ AWS Lambda
+
+Serverless compute service used to automate ETL operations without provisioning servers.
+
+⭐ AWS Athena
+
+Serverless query engine used to run SQL queries directly on S3 without loading data.
+
+⭐ Amazon QuickSight
+
+Cloud-based BI tool used to build dashboards and visualizations from Athena datasets.
 📚 Dataset Used
 
 Kaggle Dataset: YouTube Trending Videos
@@ -85,3 +97,38 @@ Likes, views, comments
 category_id mapping via JSON
 
 Publication timestamps
+
+
+
+
+🔄 Pipeline Workflow
+1️⃣ Upload raw YouTube trending data → S3 bucket (raw zone)
+2️⃣ AWS Glue Crawler reads schema → creates metadata in Glue Catalog
+3️⃣ PySpark ETL script (Glue Job) transforms data:
+
+Clean missing fields
+
+Parse JSON category mapping
+
+Convert timestamps
+
+Merge multi-region data
+
+Write to cleaned/ and transformed/ zones
+
+4️⃣ Lambda triggers Glue jobs automatically when new data arrives
+5️⃣ Athena reads transformed data directly from S3
+6️⃣ QuickSight dashboard shows insights & visualizations
+📈 Dashboard Insights (QuickSight)
+
+Examples of metrics you can visualize:
+
+Most trending categories by region
+
+Most popular channels
+
+Videos with highest likes-to-views ratio
+
+Daily trending patterns
+
+Country-wise engagement trends
